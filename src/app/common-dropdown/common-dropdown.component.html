@@ -1,0 +1,5 @@
+<div class="btn-group">
+    <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedRegion"  (change)="selected()" >
+        <option *ngFor="let reg of regionOrCountry" [ngValue]="reg"> {{reg}}</option>
+      </select>
+</div>  
