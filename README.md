@@ -1,7 +1,7 @@
 # steps
 1. Clone the code.
 2. run command 'npm install'.
-3. ng serve to run the code.
+3. ng serve to run the code. (hit: http://localhost:4200/)
 4. Select region. (Country dropdown is hidden)
 5. Select country.(Table is hidden)
 country details will be shown in a tabular format.
@@ -11,6 +11,15 @@ Note: Data refresh was a issue during implementaion, so *ngIf used for dropdown 
 # Issues remain in the code: 
 1. NgRx binding couldn't happen, so data used from http. 
 2. Data type mapping is incomplete, due to errors, so type 'any' is used, which is not a good practice.
+
+#To deploy in git hub and to get live url of the code
+1. ng build --prod
+2. ng test
+3. change the angular.json ouputPath : "doc"
+4. Comment broeser lists in browserslistrc
+   ![image](https://user-images.githubusercontent.com/111244306/184574999-7f114570-9d9d-4cc5-ad65-02ecdf48416f.png)
+
+5. After adding to github repository run ng deploy --base-href=repository_name
 
 # snapshot
 ![image](https://user-images.githubusercontent.com/111244306/184567459-9e5c116a-e7cc-447d-a514-8f7e432131a5.png)
