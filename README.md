@@ -12,7 +12,7 @@ Note: Data refresh was a issue during implementaion, so *ngIf used for dropdown 
 1. NgRx binding couldn't happen, so data used from http. 
 2. Data type mapping is incomplete, due to errors, so type 'any' is used, which is not a good practice.
 
-#To deploy in git hub and to get live url of the code
+# To deploy in git hub and to get live url of the code
 1. ng build --prod
 2. ng test
 3. change the angular.json ouputPath : "doc"
