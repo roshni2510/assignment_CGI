@@ -6,10 +6,12 @@
 
     </div>
     <div class="row card-body">
-      <div class="col"><app-common-dropdown [list]="region" (selectedRegionEvent) = "selected($event)"></app-common-dropdown></div>
-      <div class="col" *ngIf="countryList.length > 0"><app-common-dropdown [list]="countryList" (selectedRegionEvent) = "selected($event)"></app-common-dropdown></div>
-      <app-country-details *ngIf="countryDetails && (countryDetails.length !==0)" [countryDetails] = "countryDetails"></app-country-details>
+      <div class="col-auto"><label class="m-1">Region</label><app-common-dropdown [list]="region" (selectedRegionEvent) = "selected($event)"></app-common-dropdown></div>
+      <div class="col-auto" *ngIf="countryList.length > 0"><label class="m-1">Country</label><app-common-dropdown [list]="countryList" (selectedRegionEvent) = "selected($event)"></app-common-dropdown></div>
+      <div class = "col-auto" *ngIf="countryList.length > 0"><button type="button" class="btn btn-secondary" (click)="Load()">Load</button></div>
+      <app-country-details *ngIf="showTable" [countryDetails] = "countryDetails" [selectedRegion]="selectedRegion"></app-country-details>
     </div>
+    
   </div>
 </div>
 

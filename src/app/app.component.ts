@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   selectedRegion: string = '';
   countryList: string[] = [];
   countryDetails: any;
+  showTable: boolean =false;
 
   constructor(
     private countries: CommonDataServiceService,
@@ -35,9 +36,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     //this.store.select((store) => store.continentList);
   }
-ngOnChanges():void {
-  
-}
   getAsianCountries() {
     this.countries.getContryAsia().subscribe((response: any) => {
       this.asianCountries = response;
@@ -51,11 +49,37 @@ ngOnChanges():void {
       this.countryList = this.europeanCountries.map((n: any) => n.name);
     });
   }
-
+ ngOnchanges(): void {
+  if(this.countryDetails) {
+    this.showTable = false;
+  }
+ }
+  Load() {
+    this.showTable =true;
+    this.countryDetails = null;
+    if(this.europeanCountries &&
+      this.europeanCountries.find((data: any) => {
+        return data.name === this.selectedRegion;
+      })){
+        this.getEuropeCountries();
+        this.countryDetails = this.europeanCountries.filter((data: any) => {
+          return data.name === this.selectedRegion;
+        });
+     }
+     if(this.asianCountries &&
+      this.asianCountries.find((data: any) => {
+        return data.name === this.selectedRegion;
+      })){
+        this.getAsianCountries();
+        this.countryDetails = this.asianCountries.filter((data: any) => {
+          return data.name === this.selectedRegion;
+        });
+     }
+  }
   selected(e: any) {
+    this.showTable =false;
     if (this.selectedRegion !== e) {
       this.selectedRegion = e;
-      this.countryDetails = null;
     }
 
     if (this.selectedRegion === 'Asia') {
@@ -66,19 +90,7 @@ ngOnChanges():void {
       this.countryList = [];
       this.europeanCountries = [];
       this.getEuropeCountries();
-    } else {
+    } 
      // this.asianCountries = this.store.select((store) => store.countryList);
-      this.countryDetails =
-        this.europeanCountries &&
-        this.europeanCountries.find((data: any) => {
-          return data.name === e;
-        })
-          ? this.europeanCountries.filter((data: any) => {
-              return data.name === e;
-            })
-          : this.asianCountries?.filter((data: any) => {
-              return data.name === e;
-            });
-    }
   }
 }
