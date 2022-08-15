@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { RegionAndCountryReducer } from './store/reducers/regionAndCountry.reducer';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
+import { listReducer } from './store/list.reducer';
 
 import { AppComponent } from './app.component';
 import { CommonDropdownComponent } from './common-dropdown/common-dropdown.component';
@@ -23,7 +23,7 @@ import { CountryDetailsComponent } from './country-details/country-details.compo
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot(RegionAndCountryReducer)
+    StoreModule.forRoot({list: listReducer})
    ],
   providers: [],
   bootstrap: [AppComponent]

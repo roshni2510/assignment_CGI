@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { RegionAndCountry } from './store/models/regionAndCountry.model';
+import { Store } from '@ngrx/store';
+
+import { selectList, selectDisplayList } from './store/list.selectors';
+import { displayList } from './store/list.actions';
+
+
 import { CommonDataServiceService } from './common-data-service.service';
-import { AppState } from './app.state';
 import { CommonData } from './common-data';
 import { CountryDetails } from './countryDetails.interface';
-import {RegionAndCountryAction , Region} from '../app/store/actions/regionAndCountry.action';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,8 +17,8 @@ import {RegionAndCountryAction , Region} from '../app/store/actions/regionAndCou
 })
 export class AppComponent implements OnInit {
   title = 'Region Country Details';
+  list$ = this.store.select(selectList);
 
-  //regionAndCountry$: Observable<Array<RegionAndCountry>>;
   asianCountries: any;
   europeanCountries: any;
   region: string[] = ['Asia', 'Europe'];
@@ -25,22 +27,19 @@ export class AppComponent implements OnInit {
   countryDetails: any;
   showTable: boolean =false;
 
-  constructor(
+  constructor(private store: Store,
     private countries: CommonDataServiceService,
-    private store: Store<AppState>
   ) 
   
   {
-    //this.regionAndCountry$ = this.store.select((store) => store.regions);
   }
   ngOnInit(): void {
-    //this.store.select((store) => store.continentList);
+    this.store.dispatch(displayList({ list:[]}));
   }
   getAsianCountries() {
     this.countries.getContryAsia().subscribe((response: any) => {
       this.asianCountries = response;
       this.countryList = this.asianCountries.map((n: any) => n.name);
-      //this.store.dispatch(new RegionAndCountryAction(this.asianCountries));
     });
   }
   getEuropeCountries() {
@@ -91,6 +90,5 @@ export class AppComponent implements OnInit {
       this.europeanCountries = [];
       this.getEuropeCountries();
     } 
-     // this.asianCountries = this.store.select((store) => store.countryList);
   }
 }
