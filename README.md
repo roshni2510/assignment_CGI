@@ -9,13 +9,12 @@ Note: Data refresh was a issue during implementaion, so *ngIf used for dropdown 
 
 # Issues remain in the code: 
 1. NgRx binding couldn't happen, so data used from http. 
-2. On country change table is not getting refreshed. But it works for each region change.
-3. Data type mapping is incomplete, due to errors, so type 'any' is used, which is not a good practice.
+2. Data type mapping is incomplete, due to errors, so type 'any' is used, which is not a good practice.
 
 # snapshot
-![image](https://user-images.githubusercontent.com/111244306/184553092-84487bae-5fec-4fd8-b3cb-1b403ad65d49.png)
+![image](https://user-images.githubusercontent.com/111244306/184567459-9e5c116a-e7cc-447d-a514-8f7e432131a5.png)
+![image](https://user-images.githubusercontent.com/111244306/184567521-1f40f1c2-cdb1-42f0-82de-ccd6807236c4.png)
 
-![image](https://user-images.githubusercontent.com/111244306/184553121-9c5dbd91-fd11-4f7b-a72c-2a92bd33a5f4.png)
 
 
 
