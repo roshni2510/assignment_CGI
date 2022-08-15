@@ -1,8 +1,9 @@
 # steps
 1. Clone the code.
 2. run command 'npm install'.
-3. Select region. (Country dropdown is hidden)
-4. Select country.(Table is hidden)
+3. ng serve to run the code.
+4. Select region. (Country dropdown is hidden)
+5. Select country.(Table is hidden)
 country details will be shown in a tabular format.
 
 Note: Data refresh was a issue during implementaion, so *ngIf used for dropdown and table.
